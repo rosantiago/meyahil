@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Index{% endblock %}
+
+{% block head %}
+  {{ super() }}
+  <style type="text/css">
+    .important { color: #336699; }
+  </style>
+{% endblock %}
+
+{% block content %}
+	<h1>Meyahil</h1>
+  	<p class="important">
+    	Bienvenido a ésta página diseñada por {{ name }}.
+
+	</p>
+{% endblock %}
+
+
+{% block footer %}
+  &copy; Copyright 2012 by <a href="http://domain.invalid/">Santiago & Tagle Technologies, S. de L.R. de C.V.</a>.
+{% endblock %}
