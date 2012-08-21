@@ -2,7 +2,6 @@
 <html>
   <head>
     {% block head %}
-<<<<<<< HEAD
     <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap-responsive.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='docs.css') }}">
@@ -134,22 +133,17 @@
 
 
 <div id="content">{% block content %}{% endblock %}</div>
-=======
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <title>{% block title %}{% endblock %} - My Webpage</title>
     {% endblock %}
   </head>
 <body>
   <div id="content">{% block content %}{% endblock %}</div>
->>>>>>> 11fe13be07f4f1101ca053041a30ba9c1b867800
   <div id="footer">
     {% block footer %}
     
     {% endblock %}
   </div>
-<<<<<<< HEAD
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 	<script src="{{ url_for('static', filename='bootstrap.min.js') }}"></script>
-=======
->>>>>>> 11fe13be07f4f1101ca053041a30ba9c1b867800
 </body>
