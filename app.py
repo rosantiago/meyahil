@@ -8,12 +8,18 @@ from jinja2 import Template
 app = Flask(__name__)
 
 
+Vars = {'title':"titulo", 'head':"cabecera", 'name':"Rodrigo Santiago de la Torre"}
+
 #enrutamientos
 
 #INDEX
 @app.route('/')
-def index(name = None):
-	return render_template('content.html', name = 'Rodrigo Santiago de la Torre')
+def index(variables = Vars):
+	return render_template('index.html', name = variables["name"])
+
+@app.route('/prueba')
+def prueba(variables = Vars):
+	return render_template('prueba.html', name = variables["name"])
 
 if __name__ == '__main__':
 	port = int(os.environ.get('PORT', 5000))
