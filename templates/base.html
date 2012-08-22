@@ -1,5 +1,4 @@
 <!doctype html>
-
 <html>
   <head>
     {% block head %}
@@ -11,6 +10,9 @@
   </head>
 <body class="preview" data-spy="scroll" data-target=".subnav" data-offset="50">
   
+
+
+
 <div class="container">
 
 	<!-- Navbar
@@ -67,6 +69,10 @@
 
 	</section>
 
+
+
+
+	
 	<!-- Masthead
 	================================================== -->
 	<header class="jumbotron subhead" id="overview">
@@ -127,12 +133,6 @@
 
 
 <div id="content">{% block content %}{% endblock %}</div>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <title>{% block title %}{% endblock %} - My Webpage</title>
-    {% endblock %}
-  </head>
-<body>
-  <div id="content">{% block content %}{% endblock %}</div>
   <div id="footer">
     {% block footer %}
     
