@@ -13,10 +13,6 @@ app = Flask(__name__)
 #INDEX
 @app.route('/')
 def index(name = None):
-	return render_template('content.html', name = 'Rodrigo Santiago de la Torre')
-if __name__ == '__main__':
-	port = int(os.environ.get('PORT', 5000))
-	app.debug = True
 	return render_template('content.html', name = 'Rodrigo')
 
 if __name__ == '__main__':
