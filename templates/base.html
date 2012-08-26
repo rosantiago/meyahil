@@ -76,7 +76,16 @@
 	{% block footer %}
 	<hr>
       <footer>
-        <p>&copy; Copyright 2012 {{ name }}.</p>
+
+<ul>
+{% for amigo in amigos %}
+    <li>Send email to {{ amigo }}</li>
+{% endfor %}
+</ul>
+
+
+
+        <!--> <p>&copy; Copyright 2012 {{ name }}.</p> <!-->
       </footer>
 	{% endblock %}
 

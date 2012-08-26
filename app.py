@@ -25,14 +25,22 @@ api = tweepy.API(auth)
 
 Nombre = api.me().name
 
+user = api.get_user("scarlettagle")
+#print amigo.__getstate__()
+
+Amigos = []
+
+for friend in user.friends():
+	Amigos.append(friend.screen_name)
+
 #INDEX
 @app.route('/')
-def index(variables = Vars):
-	return render_template('index.html', name = Nombre)
+def index():
+	return render_template('index.html', amigos = Amigos)
 
 @app.route('/prueba')
 def prueba(variables = Vars):
-	return render_template('prueba.html', name = Nombre)
+	return render_template('prueba.html', amigos = Amigos)
 
 if __name__ == '__main__':
 	port = int(os.environ.get('PORT', 5000))
