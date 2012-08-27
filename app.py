@@ -4,6 +4,7 @@ from flask import render_template
 from flask import url_for
 from jinja2 import Template 
 import tweepy
+import sqlalchemy
 
 
 app = Flask(__name__)
