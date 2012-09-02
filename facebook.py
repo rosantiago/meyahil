@@ -54,7 +54,6 @@ def facebook_authorized(resp):
 def get_facebook_oauth_token():
     return session.get('oauth_token')
 
-
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
     app.debug = True
