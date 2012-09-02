@@ -26,7 +26,7 @@ facebook = oauth.remote_app('facebook',
 
 @app.route('/')
 def index():
-    return redirect(url_for('login'))
+    return "jala"
 
 
 @app.route('/login')
