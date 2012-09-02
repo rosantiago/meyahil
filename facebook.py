@@ -1,5 +1,9 @@
-from flask import Flask, redirect, url_for, session, request
+import os
+from flask import Flask, redirect, url_for, session, request, render_template
 from flaskext.oauth import OAuth
+from jinja2 import Template 
+from sqlalchemy import create_engine
+import tweepy
 
 
 SECRET_KEY = 'DEVELOPMENT KEY'
