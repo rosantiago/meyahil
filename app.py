@@ -24,14 +24,15 @@ auth.set_access_token(TOKEN, TOKEN_KEY)
 #conectar con twitter
 api = tweepy.API(auth)
 Nombre = api.me().name
-user = api.get_user("scarlettagle")
+user = api.get_user("brokenarrow16")
 #print amigo.__getstate__()
 Amigos = []
 for friend in user.friends():
 	Amigos.append(friend.screen_name)
 
-
-
+Seguidores = []
+for seguidor in user.followers():
+	Seguidores.append(seguidor.screen_name)
 #Postgresql Heroku
 engine = create_engine("postgresql+psycopg2://uqaahrbxjryovr:5OINFQLm37k1Wwm1ccrzgF2SLS@ec2-107-22-163-194.compute-1.amazonaws.com:5432/dppksd24msr1f", client_encoding='utf8')
 Nombre = engine.execute("select 1").scalar()
@@ -45,6 +46,10 @@ def index():
 @app.route('/prueba')
 def prueba(variables = Vars):
 	return render_template('prueba.html', nombre = Nombre)
+
+@app.route('/dashboard')
+def dashboard():
+	return render_template('dashboard.html')
 
 if __name__ == '__main__':
 	port = int(os.environ.get('PORT', 5000))
