@@ -1,55 +1,34 @@
 import os
+import simplejson
 from flask import Flask
-from flask import render_template
-from flask import url_for
-from jinja2 import Template 
-from sqlalchemy import create_engine
-import tweepy
-
+from flask.ext.sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://uqaahrbxjryovr:5OINFQLm37k1Wwm1ccrzgF2SLS@ec2-107-22-163-194.compute-1.amazonaws.com:5432/dppksd24msr1f'
+db = SQLAlchemy(app)
 
 
-Vars = {'title':"titulo", 'head':"cabecera", 'name':"Rodrigo Santiago de la Torre"}
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(80), unique=True)
+    email = db.Column(db.String(120), unique=True)
 
-#tweepy vars
-TOKEN = "85831956-oNc3bTqUb3RxvrWXmxAGUyRRirnxaa2Mx1HuPmuU"
-TOKEN_KEY ="KyKZgLyhVWNqSWMyWHd9wb06xMASiH80czc6cewLk8"
-CON_SEC = "bLJQSgEg9JEYt2jnAooSnw"
-CON_SEC_KEY = "XqS4cQ7NhF5GHUPHUYxwDUQVXyjzsg2LSDhkQhsM"
+    def __init__(self, username, email):
+        self.username = username
+        self.email = email
 
-auth = tweepy.OAuthHandler(CON_SEC, CON_SEC_KEY)
-auth.set_access_token(TOKEN, TOKEN_KEY)
+    def __repr__(self):
+        return '<User %r>' % self.username
 
-#conectar con twitter
-api = tweepy.API(auth)
-Nombre = api.me().name
-user = api.get_user("brokenarrow16")
-#print amigo.__getstate__()
-Amigos = []
-for friend in user.friends():
-	Amigos.append(friend.screen_name)
-
-Seguidores = []
-for seguidor in user.followers():
-	Seguidores.append(seguidor.screen_name)
-#Postgresql Heroku
-engine = create_engine("postgresql+psycopg2://uqaahrbxjryovr:5OINFQLm37k1Wwm1ccrzgF2SLS@ec2-107-22-163-194.compute-1.amazonaws.com:5432/dppksd24msr1f", client_encoding='utf8')
-Nombre = engine.execute("select 1").scalar()
 
 
 #INDEX
 @app.route('/')
-def index():
-	return render_template('index.html', amigos = Amigos)
+def home():
+    return simplejson.dumps([ dict(id = u.id,
+                                   user_name = u.username,
+                                   email = u.email) for u in User.query.all()])
 
-@app.route('/prueba')
-def prueba(variables = Vars):
-	return render_template('prueba.html', nombre = Nombre)
-
-@app.route('/dashboard')
-def dashboard():
-	return render_template('dashboard.html')
 
 if __name__ == '__main__':
 	port = int(os.environ.get('PORT', 5000))

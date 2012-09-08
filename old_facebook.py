@@ -11,7 +11,6 @@ DEBUG = True
 FACEBOOK_APP_ID = '277255599055451'
 FACEBOOK_APP_SECRET = '6b65ab35f2db5a4e21af693a0bb3f039'
 
-
 app = Flask(__name__)
 app.debug = DEBUG
 app.secret_key = SECRET_KEY
