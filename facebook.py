@@ -6,7 +6,6 @@ from sqlalchemy import create_engine
 import tweepy
 
 
-
 SECRET_KEY = 'DEVELOPMENT KEY'
 DEBUG = True
 FACEBOOK_APP_ID = '277255599055451'
